@@ -35,12 +35,12 @@ namespace Curve {
 			return point;
 		}
 
-		/*==========================================================================
-		 * TangentAt
+		/***************************************************************************
+		 * NormalizedTangentAt
 		 * @return the tangent at the spline at the point between cp1 and cp2 in
 		 * @param time time t.
 		 * @return the normalized tangent.
-		 *==========================================================================
+		 ***************************************************************************
 		 */
 		public static Vector3 NormalizedTangentAt(float t, Vector3 cp0, Vector3 cp1, Vector3 cp2, Vector3 cp3) {
 
@@ -48,6 +48,19 @@ namespace Curve {
 			Vector3 pointB = CurvePointAt(t + 0.05f, cp0, cp1, cp2, cp3);
 
 			return Vector3.Normalize(pointB - pointA);
+		}
+	
+		/***************************************************************************
+		 * TangentAt
+		 * The tangent at @param t of the spline.
+		 *************************************************************************** 
+		 */
+		public static Vector3 TangentAt(float t, Vector3 cp0, Vector3 cp1, Vector3 cp2, Vector3 cp3) {
+
+			Vector3 pointA = CurvePointAt(t, cp0, cp1, cp2, cp3);
+			Vector3 pointB = CurvePointAt(t + 0.05f, cp0, cp1, cp2, cp3);
+
+			return pointB - pointA;
 		}
 
 		public static void Test() {

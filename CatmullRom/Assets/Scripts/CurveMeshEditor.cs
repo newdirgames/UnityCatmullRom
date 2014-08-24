@@ -3,7 +3,7 @@ using UnityEditor;
 using System.Collections.Generic;
 // NOTE: We don't need to declare using on the files in our scripts folder.
 
-[CustomEditor (typeof (CurveMesh))] 
+[CustomEditor (typeof (CurveObject))] 
 public class CurveMeshEditor : Editor {
 		
 	// Add a menu item to the Unity Editor.
@@ -11,7 +11,7 @@ public class CurveMeshEditor : Editor {
 	static void Create() {
 
 		GameObject gameObject = new GameObject("CurveMesh");
-		CurveMesh cm = gameObject.AddComponent<CurveMesh>();
+		CurveObject cm = gameObject.AddComponent<CurveObject>();
 		MeshFilter meshFilter = gameObject.GetComponent<MeshFilter>();
 		meshFilter.mesh = new Mesh();
 
@@ -24,6 +24,6 @@ public class CurveMeshEditor : Editor {
 		controlPoints.Add(new Vector3() { x = 200.0f, y = 0.0f, z = 140.0f });
 
 //		cm.CreateQuadMesh();
-		cm.CreateCatmullStrip(controlPoints, 0.0f);
+		cm.CreateCatmullCurve(controlPoints, 0.0f);
 	}
 }
